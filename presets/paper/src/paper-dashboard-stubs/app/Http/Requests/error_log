@@ -1,0 +1,12 @@
+[25-Mar-2024 23:18:55 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\FormRequest" not found in /home/bookyou2/public_html/dextrasoftware.com/waterapp/presets/paper/src/paper-dashboard-stubs/app/Http/Requests/UserRequest.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/bookyou2/public_html/dextrasoftware.com/waterapp/presets/paper/src/paper-dashboard-stubs/app/Http/Requests/UserRequest.php on line 9
+[26-Mar-2024 12:12:36 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\FormRequest" not found in /home/bookyou2/public_html/dextrasoftware.com/waterapp/presets/paper/src/paper-dashboard-stubs/app/Http/Requests/PasswordRequest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bookyou2/public_html/dextrasoftware.com/waterapp/presets/paper/src/paper-dashboard-stubs/app/Http/Requests/PasswordRequest.php on line 8
+[26-Mar-2024 15:12:59 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\FormRequest" not found in /home/bookyou2/public_html/dextrasoftware.com/waterapp/presets/paper/src/paper-dashboard-stubs/app/Http/Requests/ProfileRequest.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/bookyou2/public_html/dextrasoftware.com/waterapp/presets/paper/src/paper-dashboard-stubs/app/Http/Requests/ProfileRequest.php on line 9
