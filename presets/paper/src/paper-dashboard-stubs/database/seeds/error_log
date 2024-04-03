@@ -1,0 +1,8 @@
+[23-Mar-2024 15:26:41 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/bookyou2/public_html/dextrasoftware.com/waterapp/presets/paper/src/paper-dashboard-stubs/database/seeds/DatabaseSeeder.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/bookyou2/public_html/dextrasoftware.com/waterapp/presets/paper/src/paper-dashboard-stubs/database/seeds/DatabaseSeeder.php on line 6
+[23-Mar-2024 22:56:46 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/bookyou2/public_html/dextrasoftware.com/waterapp/presets/paper/src/paper-dashboard-stubs/database/seeds/UsersTableSeeder.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bookyou2/public_html/dextrasoftware.com/waterapp/presets/paper/src/paper-dashboard-stubs/database/seeds/UsersTableSeeder.php on line 8

@@ -1,0 +1,4 @@
+[23-Mar-2024 14:18:46 UTC] PHP Fatal error:  Uncaught Error: Interface "Illuminate\Contracts\Validation\Rule" not found in /home/bookyou2/public_html/dextrasoftware.com/waterapp/presets/paper/src/paper-dashboard-stubs/app/Rules/CurrentPasswordCheckRule.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bookyou2/public_html/dextrasoftware.com/waterapp/presets/paper/src/paper-dashboard-stubs/app/Rules/CurrentPasswordCheckRule.php on line 8
