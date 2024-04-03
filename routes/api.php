@@ -20,7 +20,8 @@ Route::post('/user/otp_send',[UserController::class,'otp_send']);
 Route::post('/user/otpverfication',[UserController::class,'otpverfication']);
 Route::post('/user/singlesignup', [UserController::class, 'singlesignup']);
 
-
+Route::post('/user/notification_add',[userController::class,'notification_add']);
+Route::post('/user/store',[userController::class,'store_vendor'])->name('vendor.store');
 
 
 

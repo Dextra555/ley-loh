@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Vendor;
 
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
@@ -43,4 +44,17 @@ class ProfileController extends Controller
 
         return back()->withPasswordStatus(__('Password successfully updated.'));
     }
+
+
+    public function vendor_form(){
+        return view('pages.vendor');
+ 
+       }
+
+       public function vendor_list()
+       {
+           $vendor = Vendor::all();        
+           return view('pages.vendor_list', compact('vendor'));
+   
+       }
 }

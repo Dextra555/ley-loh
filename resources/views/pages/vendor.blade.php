@@ -1,22 +1,21 @@
 @extends('layouts.app', [
-'class' => '',
-'elementActive' => 'vendors'
+    'class' => '',
+    'elementActive' => 'typography'
 ])
 
 @section('content')
 <style>
-.upload-container {
+  .upload-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-}
-
-.file-input {
+   
+  }
+ 
+  .file-input {
     display: none;
-}
-
-.file-label {
+  }
+  .file-label {
     background-color: #007bff;
     color: #fff;
     padding: 10px 20px;
@@ -24,13 +23,11 @@
     cursor: pointer;
     position: relative;
     margin-bottom: 5px;
-}
-
-.file-label:hover {
+  }
+  .file-label:hover {
     background-color: #0056b3;
-}
-
-.remove-btn {
+  }
+  .remove-btn {
     background-color: transparent;
     border: none;
     padding: 0;
@@ -42,64 +39,61 @@
     color: #fff;
     cursor: pointer;
     display: none;
-}
-
-.file-label:hover .remove-btn {
+  }
+  .file-label:hover .remove-btn {
     display: block;
-}
+  }
 </style>
 
 <div class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{{ route('vendor.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
 
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" class="form-control" id="username" name="username" required>
-                </div>
+                    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+        
+      <div class="form-group">
+        <label for="mobile_number">Mobile Number:</label>
+        <input type="tel" class="form-control" id="mobile_number" name="mobile_number" required>
+      </div>
+      
+      
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" class="form-control" id="location" name="location">
+      </div>
+      
+      
 
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
+      <div class="form-group">
+        <label for="industry_type">Industry Type:</label>
+        <select class="form-control" id="industry_type" name="industry_type">
+        <option value="Restaurant">Restaurant</option>
+          <option value="Super_Market">Super Market</option>
+          <option value="Hospital">Hospital</option>
+          <option value="Store">Store</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
 
-                <div class="form-group">
-                    <label for="confirm_password">Confirm Password:</label>
-                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="mobile_number">Mobile Number:</label>
-                    <input type="tel" class="form-control" id="mobile_number" name="mobile_number" required>
-                </div>
-
-
-                <div class="form-group">
-                    <label for="location">Location:</label>
-                    <input type="text" class="form-control" id="location" name="location">
-                </div>
-
-
-
-                <div class="form-group">
-                    <label for="industry_type">Industry Type:</label>
-                    <select class="form-control" id="industry_type" name="industry_type">
-                        <option value="Technology">Technology</option>
-                        <option value="Finance">Finance</option>
-                        <option value="Healthcare">Healthcare</option>
-                        <option value="Education">Education</option>
-                        <!-- Add more options as needed -->
-                    </select>
-                </div>
-
-  <!-- <div class="form-group">
+        <!-- <div class="form-group">
+            
             <div class="upload-container">
             <label for="icon_image">Icon Image:</label>
                 <input type="file" id="fileInput" class="file-input" multiple>
@@ -108,40 +102,40 @@
         </div> -->
 
 
-                <center><button type="submit" class="btn btn-primary register">Register</button></center>
-            </form>
+      <center><button type="submit" class="btn btn-primary register">Register</button></center>
+                </form>
 
 
-        </div>
-    </div>
+</div>
+</div>
 </div>
 
 
-
+<!-- 
 <script>
-const fileInput = document.getElementById('fileInput');
-
-// fileInput.addEventListener('change', handleFileSelect);
-
-function handleFileSelect(event) {
+  const fileInput = document.getElementById('fileInput');
+  
+  // fileInput.addEventListener('change', handleFileSelect);
+  
+  function handleFileSelect(event) {
     const fileList = event.target.files;
     const uploadContainer = document.querySelector('.upload-container');
     for (let i = 0; i < fileList.length; i++) {
-        const fileName = fileList[i].name;
-        const fileLabel = document.createElement('label');
-        fileLabel.textContent = fileName;
-        fileLabel.className = 'file-label';
-        const removeBtn = document.createElement('button');
-        removeBtn.innerHTML = '&times;';
-        removeBtn.className = 'remove-btn';
-        removeBtn.addEventListener('click', () => {
-            fileInput.value = '';
-            uploadContainer.removeChild(fileLabel);
-        });
-        fileLabel.appendChild(removeBtn);
-        uploadContainer.appendChild(fileLabel);
+      const fileName = fileList[i].name;
+      const fileLabel = document.createElement('label');
+      fileLabel.textContent = fileName;
+      fileLabel.className = 'file-label';
+      const removeBtn = document.createElement('button');
+      removeBtn.innerHTML = '&times;';
+      removeBtn.className = 'remove-btn';
+      removeBtn.addEventListener('click', () => {
+        fileInput.value = '';
+        uploadContainer.removeChild(fileLabel);
+      });
+      fileLabel.appendChild(removeBtn);
+      uploadContainer.appendChild(fileLabel);
     }
-}
-</script>
+  }
+</script> -->
 
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\ProfileController;
 
 // Route::get('api/signup',[ApiController::class,'register']);
 
@@ -57,6 +58,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
+
+	Route::get('/vendor',[ProfileController::class, 'vendor_form'])->name('vendor_form');
+	Route::get('/vendor/vendor-list',[ProfileController::class, 'vendor_list'])->name('vendor_list');
+
+
 });
 
 Route::group(['middleware' => 'auth'], function () {
