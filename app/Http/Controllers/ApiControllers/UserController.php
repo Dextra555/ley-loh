@@ -14,8 +14,48 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use App\Models\Vendor;
+
 class UserController extends Controller
 {
+
+
+    public function store_vendor(Request $request)
+    {
+        $validatedData = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+            'email' => 'required',
+            'mobile_number' => 'required',
+            'location' => 'required',
+            'industry_type' => 'required',
+    
+        ]);
+
+        try {
+            $vendor = new Vendor;
+            $vendor->username = $request->username;
+            $vendor->password = Hash::make($request->password);
+            $vendor->email = $request->email;
+            $vendor->mobile_number = $request->mobile_number;
+            $vendor->location = $request->location;
+            $vendor->industry_type = $request->industry_type;
+            $vendor->save();
+
+            return redirect()->route('vendor_list')->with('success', 'Apartment Added Successfully');
+        
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while creating the customer',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+    
+    
+
+
     public function signup(Request $request)
     {
         $validatedData = $request->validate([

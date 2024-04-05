@@ -6,6 +6,8 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 
 // Route::get('api/signup',[ApiController::class,'register']);
 
@@ -53,10 +55,22 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('location/state/delete/{id}',[LocationController::class, 'deleteState'])->name('location.state.delete');
 	Route::get('location/city/delete/{id}',[LocationController::class, 'deleteCity'])->name('location.city.delete');
 	Route::get('location/area/delete/{id}',[LocationController::class, 'deleteArea'])->name('location.area.delete');
-	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
+	// Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
+
+	Route::get('/vendor',[ProfileController::class, 'vendor_form'])->name('vendor_form');
+	Route::get('/vendor/vendor-list',[ProfileController::class, 'vendor_list'])->name('vendor_list');
+
+
+	Route::get('/user/register', [UserController::class, 'create'])->name('show_register');
+	Route::post('/user/register', [UserController::class, 'store'])->name('register');
+	Route::get('/user/user-list',[UserController::class, 'user_list'])->name('user_list');
+	Route::get('/user/user-list',[UserController::class, 'user_list'])->name('user_list');
+	Route::post('/storeStatus', [UserController::class, 'storeStatus'])->name('storeStatus');
+
+
 });
 
 Route::group(['middleware' => 'auth'], function () {
