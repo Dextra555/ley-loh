@@ -75,13 +75,13 @@
                 <div class="collapse" id="cusMenu">
                     <ul class="nav">
                         <li class="{{ $elementActive == 'cus-add' ? 'active' : '' }}">
-                            <a href="">
+                            <a href="{{ route('show_register') }}">
                                 <span class="sidebar-mini-icon">{{ __('AC') }}</span>
                                 <span class="sidebar-normal">{{ __('Add Customer') }}</span>
                             </a>
                         </li>
                         <li class="{{ $elementActive == 'cus-list' ? 'active' : '' }}">
-                            <a href="">
+                            <a href="{{ route('user_list') }}">
                                 <span class="sidebar-mini-icon">{{ __('LC') }}</span>
                                 <span class="sidebar-normal">{{ __('List Customers') }}</span>
                             </a>

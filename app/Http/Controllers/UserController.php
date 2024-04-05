@@ -4,6 +4,8 @@ use App\Models\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Models\Myusers;
+
 
 
 class UserController extends Controller
@@ -19,23 +21,57 @@ class UserController extends Controller
         return view('users.index', ['users' => $model->paginate(15)]);
     }
 
-    public function register(Request $request)
+    //user register    
+    public function create()
     {
-        print_r("hi");
-        // Validate the request data (e.g., name, email, password)
-    //     $validatedData = $request->validate([
-    //         'email' => 'required|email|unique:users',
-    //         'password' => 'required|string|min:8',
-    //     ]);
-    
-    //     // Create a new user
-    //     $user = User::create([
-    //         'email' => $validatedData['email'],
-    //         'password' => bcrypt($validatedData['password']),
-    //     ]);
-    
-    //     // Return a response (e.g., user data or a success message)
-    //     return response()->json(['user' => $user, 'message' => 'User registered successfully'], 201);
-     }
+        return view('users.register');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'location' => 'required',
+            'mobile_number' => 'required',
+            'password' => 'required|min:6',
+        ]);
+
+        Myusers::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'location' => $request->location,
+            'mobile_number' => $request->mobile_number,
+            'password' => $request->password,
+        ]);
+
+        return redirect('/login')->with('success', 'User registered successfully.');
+    }
+
+    public function user_list()
+       {
+           $users = Myusers::all();        
+           return view('users.users_list', compact('users'));
+   
+       }
+
+
+
+        public function storeStatus(Request $request)
+    {
+        try {
+            $userId = $request->input('userId');
+            $status = $request->input('status');
+
+            $user = Myusers::findOrFail($userId);
+
+            $user->status = $status;
+            $user->save();
+
+            echo json_encode(array('success' => true));
+        } catch (\Exception $e) {
+            echo json_encode(array('success' => false));
+        }
+    }
     
 }
