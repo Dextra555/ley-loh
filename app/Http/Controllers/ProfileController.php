@@ -50,7 +50,7 @@ class ProfileController extends Controller
         return view('pages.vendor');
  
        }
-
+ 
        public function vendor_list()
        {
            $vendor = Vendor::all();        

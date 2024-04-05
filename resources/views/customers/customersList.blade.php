@@ -30,7 +30,7 @@
 @enderror
 
     <div class="content">
-        
+         
         <div class="row">
             <div class="col-md-6">
                 <form class="col-md-12" action="{{route('location.state.add')}}" method="POST" enctype="multipart/form-data">
