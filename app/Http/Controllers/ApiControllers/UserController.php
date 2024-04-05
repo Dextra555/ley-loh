@@ -19,43 +19,65 @@ use App\Models\Vendor;
 class UserController extends Controller
 {
 
-
-    public function store_vendor(Request $request)
-    {
-        $validatedData = $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-            'email' => 'required',
-            'mobile_number' => 'required',
-            'location' => 'required',
-            'industry_type' => 'required',
+        public function store_vendor(Request $request)
+        {
+            $validatedData = $request->validate([
+                'username' => 'required',
+                'password' => 'required',
+                'email' => 'required',
+                'mobile_number' => 'required',
+                'location' => 'required',
+                'industry_type' => 'required',
+                'icon_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
     
-        ]);
-
+            ]);
+    
+            try {
+                $vendor = new Vendor;
+                $vendor->username = $request->username;
+                $vendor->password = Hash::make($request->password);
+                $vendor->email = $request->email;
+                $vendor->mobile_number = $request->mobile_number;
+                $vendor->location = $request->location;
+                $vendor->industry_type = $request->industry_type;
+                if ($request->hasFile('icon_image') && $request->file('icon_image')->isValid()) {
+                    $imagePath = $request->file('icon_image')->store('public/icon_images');
+                    $vendor->icon_image = basename($imagePath);
+                }
+                $vendor->status = $request->status;
+                $vendor->save();
+                    return redirect('vendor')->with('success', 'Vendor Added Successfully');
+            } catch (\Exception $e) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'An error occurred while creating the customer',
+                    'error' => $e->getMessage(),
+                ], 500);
+            }
+        }
+    
+    public function updateStatus(Request $request)
+    {
         try {
-            $vendor = new Vendor;
-            $vendor->username = $request->username;
-            $vendor->password = Hash::make($request->password);
-            $vendor->email = $request->email;
-            $vendor->mobile_number = $request->mobile_number;
-            $vendor->location = $request->location;
-            $vendor->industry_type = $request->industry_type;
+            // Retrieve vendor ID and status from the request
+            $vendorId = $request->input('vendorId');
+            $status = $request->input('status');
+
+            // Find the vendor by ID
+            $vendor = Vendor::findOrFail($vendorId);
+
+            // Update the status
+            $vendor->status = $status;
             $vendor->save();
 
-            return redirect()->route('vendor_list')->with('success', 'Apartment Added Successfully');
-        
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'An error occurred while creating the customer',
-                'error' => $e->getMessage(),
-            ], 500);
-        }
+            // Return a success response
+            echo json_encode(array('success' => true));
+                } catch (\Exception $e) {
+            // Return an error response if an exception occurs
+            echo json_encode(array('success' => false));        }
     }
-    
-    
 
-
+    
     public function signup(Request $request)
     {
         $validatedData = $request->validate([
