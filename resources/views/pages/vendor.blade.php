@@ -84,22 +84,20 @@
       <div class="form-group">
         <label for="industry_type">Industry Type:</label>
         <select class="form-control" id="industry_type" name="industry_type">
-        <option value="Restaurant">Restaurant</option>
-          <option value="Super_Market">Super Market</option>
-          <option value="Hospital">Hospital</option>
-          <option value="Store">Store</option>
+          <option value="Technology">Store</option>
+          <option value="Restarent">Restarent</option>
+          <option value="Healthcare">Hostel</option>
+          <option value="Education">Store</option>
           <!-- Add more options as needed -->
         </select>
       </div>
-
-        <!-- <div class="form-group">
-            
-            <div class="upload-container">
-            <label for="icon_image">Icon Image:</label>
-                <input type="file" id="fileInput" class="file-input" multiple>
-                <label for="fileInput" class="file-label">Choose File</label>
-            </div>
-        </div> -->
+      <div class="form-group">
+    <div class="upload-container">
+        <label for="icon_image">Icon Image:</label>
+        <input type="file" id="fileInput" class="file-input" name="icon_image">
+        <label for="fileInput" class="file-label">Choose File</label>
+    </div>
+</div>
 
 
       <center><button type="submit" class="btn btn-primary register">Register</button></center>
@@ -110,9 +108,7 @@
 </div>
 </div>
 
-
-<!-- 
-<script>
+<!-- <<script>
   const fileInput = document.getElementById('fileInput');
   
   // fileInput.addEventListener('change', handleFileSelect);
@@ -136,6 +132,58 @@
       uploadContainer.appendChild(fileLabel);
     }
   }
+</script>  -->
+<!-- <script>
+    const fileInput = document.getElementById('fileInput');
+    const uploadContainer = document.querySelector('.upload-container');
+    
+    fileInput.addEventListener('change', handleFileSelect);
+    
+    function handleFileSelect(event) {
+        // Remove any existing file label
+        const existingFileLabel = uploadContainer.querySelector('.file-label');
+        if (existingFileLabel) {
+            uploadContainer.removeChild(existingFileLabel);
+        }
+
+        // Create label for the selected file
+        const fileList = event.target.files;
+        if (fileList.length > 0) {
+            const fileName = fileList[0].name;
+            const fileLabel = document.createElement('label');
+            fileLabel.textContent = fileName;
+            fileLabel.className = 'file-label';
+
+            // Append label to upload container
+            uploadContainer.appendChild(fileLabel);
+        }
+    }
 </script> -->
 
+<script>
+    const fileInput = document.getElementById('fileInput');
+    const uploadContainer = document.querySelector('.upload-container');
+    
+    fileInput.addEventListener('change', handleFileSelect);
+    
+    function handleFileSelect(event) {
+        // Remove any existing file label
+        const existingFileLabel = uploadContainer.querySelector('.file-label');
+        if (existingFileLabel) {
+            uploadContainer.removeChild(existingFileLabel);
+        }
+
+        // Create label for the selected file
+        const fileList = event.target.files;
+        if (fileList.length > 0) {
+            const fileName = fileList[0].name;
+            const fileLabel = document.createElement('label');
+            fileLabel.textContent = fileName;
+            fileLabel.className = 'file-label';
+
+            // Append label to upload container
+            uploadContainer.appendChild(fileLabel);
+        }
+    }
+</script>
 @endsection
