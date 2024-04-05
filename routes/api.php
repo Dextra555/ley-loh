@@ -21,7 +21,11 @@ Route::post('/user/otpverfication',[UserController::class,'otpverfication']);
 Route::post('/user/singlesignup', [UserController::class, 'singlesignup']);
 
 Route::post('/user/notification_add',[userController::class,'notification_add']);
-Route::post('/user/store',[userController::class,'store_vendor'])->name('vendor.store');
+// Route::post('/user/store',[userController::class,'store_vendor'])->name('vendor.store');
+Route::post('/user/store', [UserController::class, 'store_vendor'])->name('vendor.store');
+
+// Route::post('/user/update-status', [userController::class,'updateStatus'])->name('updateStatus');
+Route::post('/user/update-status', [UserController::class, 'updateStatus'])->name('updateStatus');
 
 
 

@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('mobile_number');
             $table->string('location');
             $table->string('industry_type');
+            $table->binary('icon_image')->nullable();
+
+            // $table->enum('status', ['Active', 'Decline']);
+            // $table->string('status');
+            $table->string('status', ['Active', 'Decline']);
             $table->timestamps();
         });
     }
