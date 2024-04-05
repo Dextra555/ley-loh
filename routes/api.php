@@ -27,7 +27,7 @@ Route::post('/user/store', [UserController::class, 'store_vendor'])->name('vendo
 // Route::post('/user/update-status', [userController::class,'updateStatus'])->name('updateStatus');
 Route::post('/user/update-status', [UserController::class, 'updateStatus'])->name('updateStatus');
 
-
+Route::post('/user/update-status', [UserController::class, 'updateStatus'])->name('updateStatus');
 
 
 
